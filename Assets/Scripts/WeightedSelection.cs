@@ -9,9 +9,6 @@ public class WeightedSelection : MonoBehaviour
 
     private int[] pickAmounts = new int[5];
 
-    private float increaseAmt;
-    private float decreaseAmt;
-
     private bool setWeights = false;
     private int selectedPlayer;
 
@@ -36,7 +33,7 @@ public class WeightedSelection : MonoBehaviour
 
     private void WeightedNumber()
     {
-        float randNum = Random.Range(0, 100f);
+        float randNum = Random.Range(0f, 100f);
         Debug.Log("randNum = " + randNum);
 
         float totalWeight = 0f;
@@ -46,22 +43,25 @@ public class WeightedSelection : MonoBehaviour
         {
             totalWeight += weights[i];
 
-            if (i == 0 && weights[i] < randNum)
+            if (i == 0 && randNum < weights[i])
             {
                 selectedPlayer = i;
+                break;
             }
             else if (i == weights.Length - 1 && randNum > (totalWeight - weights[i]))
             {
                 selectedPlayer = i;
+                break;
             }
-            else if (randNum > totalWeight - weights[i] && randNum < totalWeight)
+            else if (randNum > totalWeight - weights[i] && randNum <= totalWeight)
             {
                 selectedPlayer = i;
+                break;
             }
         }
 
         float weightChange = weights[selectedPlayer]/2f;
-        //Debug.Log("weight change " + weightChange);
+        Debug.Log("weight change " + weightChange);
 
         // readjusts the weights after a player is chosen
         for (int i = 0; i < weights.Length; i++)

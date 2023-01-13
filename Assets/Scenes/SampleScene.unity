@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf19b393ed83914f8e2f0849f6c938a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numPlayers: 4
+  numPlayers: 7
   numRounds: 8
 --- !u!4 &1583895046
 Transform:
